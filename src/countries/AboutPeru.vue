@@ -23,24 +23,27 @@
 </template>
 
 <script>
-import {ref, onMounted} from 'vue';
-import countryService from '../../services/countryService.js';
+import { ref, onMounted } from 'vue';
+import countryService from './services/countryService.js';
 
 export default {
   name: 'AboutPeru',
   setup() {
     const country = ref(null); // Initialize as null for loading state
+    const error = ref(null); // To store any error messages
 
     onMounted(async () => {
       try {
         const response = await countryService.getCountryInfo('peru');
+        console.log('API Response:', response); // Log the response for debugging
         country.value = response[0]; // Assuming the response is an array
-      } catch (error) {
-        console.error('Error fetching country data:', error);
+      } catch (err) {
+        console.error('Error fetching country data:', err);
+        error.value = 'Failed to fetch country information. Please try again later.'; // Set error message
       }
     });
 
-    return {country};
+    return {country, error};
   }
 }
 </script>

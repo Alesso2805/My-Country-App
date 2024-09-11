@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import Toolbar from './components/public/Toolbar.vue';
-import Footer from './components/public/Footer.vue';
-import AboutPeru from './components/countries/AboutPeru.vue';
+import Toolbar from './countries/components/Toolbar.vue';
+import Footer from './countries/components/Footer.vue';
+import AboutPeru from './countries/AboutPeru.vue';
 
 export default {
   name: 'App',
